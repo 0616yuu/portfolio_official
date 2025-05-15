@@ -1,0 +1,1991 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+}
+
+/* 小さなスクリーン向けのスタイル */
+@media (max-width: 766px) {
+  /* ローディング画面のためのcss */
+  #splash {
+    /* fixedで全画面固定 */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Loading画面中央配置 */
+  #splash_logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  /* Loadingアイコンん大きさ設定 */
+  #splash_logo img {
+    width: 300px;
+  }
+  .fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+  @keyframes fadeUpAnime {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #header_top .btn-gNav {
+    position: fixed;
+    top: 15px;
+    right: 1px;
+    width: 50px;
+    height: 20px;
+    z-index: 12;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 400ms;
+  }
+  #header_top .btn-gNav span {
+    position: absolute;
+    width: 65%;
+    height: 5px;
+    background: #f9cf65;
+    border-radius: 10px;
+    transition: all 400ms;
+  }
+  #header_top .btn-gNav span:nth-child(1) {
+    /* background-color: black; */
+    top: 0px;
+  }
+  #header_top .btn-gNav span:nth-child(2) {
+    /* background-color: black; */
+    top: 10px;
+  }
+  #header_top .btn-gNav span:nth-child(3) {
+    /* background-color: black; */
+    top: 20px;
+  }
+  #header_top .btn-gNav.open span:nth-child(1) {
+    background: #ffffff;
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+  #header_top .btn-gNav.open span:nth-child(2),
+  #header_top .btn-gNav.open span:nth-child(3) {
+    top: 6px;
+    background: #ffffff;
+    transform: rotate(45deg);
+  }
+  .btn-gNav {
+    display: block;
+  }
+  .modal_class {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    box-sizing: border-box;
+    z-index: 1;
+    padding-top: 40px;
+    transition: 0.3s;
+  }
+  .modal_class.open {
+    right: 0;
+  }
+  .modal_class ul {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    text-align: center;
+  }
+  .modal_class li {
+    color: white;
+    width: 100%;
+    padding: 50px;
+    font-size: 120%;
+    border-bottom: #525252 3px solid;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal_class a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding-bottom: 5px;
+  }
+  #header_top .header_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #header_top .header_img .hige {
+    width: 35%;
+    height: 100px;
+    background: url(../image/hige2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  #header_top .header_img .stnd {
+    width: 100%;
+    height: 100px;
+    background: url(../image/stand_by_you.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: none;
+  }
+  #section_01 .article_01 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_01 .article_01 h1 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  #section_01 .article_01 p {
+    color: white;
+    font-size: 1rem;
+    line-height: 20px;
+    padding: 10px 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_01 .article_01 p:last-child {
+    text-align: right;
+    color: red;
+  }
+  #section_02 .article_02 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_02 .article_02 h2 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p {
+    color: white;
+    font-size: 1rem;
+    line-height: 20px;
+    padding: 10px 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p:last-child {
+    margin-bottom: 1em;
+  }
+  #section_03 .article_03 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_03 .article_03 h2 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick {
+    width: 80%;
+    margin: 0 auto;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara {
+    background-color: black;
+    margin: 10px auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara .Fujiwara {
+    background-image: url("../image/fujiwara.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 220px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 52.4vh;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke .daisuke {
+    background-image: url("../image/daiske.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 20%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 220px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No2_Daisuke h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+  }
+  #section_03 .article_03 .slick .No3_Makot .makot {
+    background-image: url("../image/makot.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center top;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 220px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No3_Makot h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 52.4vh;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura .Matsuura {
+    background-image: url("../image/matsur.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 30%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 220px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No4_Matsuura h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .arrow_box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 0 0;
+    position: relative;
+    margin-bottom: 2em;
+  }
+  #section_03 .prev-arrow,
+  #section_03 .next-arrow {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: coral;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+  }
+  #section_03 .prev-arrow {
+    transform: rotate(180deg);
+    margin-right: 20px;
+  }
+  #section_03 .prev-arrow::before,
+  #section_03 .next-arrow::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+  #section_04 .cd {
+    width: 100%;
+  }
+  #section_04 .cd .rej {
+    background-image: url(../image/rejoice.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .white {
+    background-image: url(../image/White.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .cry {
+    background-image: url(../image/cry.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .sub {
+    background-image: url(../image/sabu.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .chess {
+    background-image: url(../image/ches.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .tattoo {
+    background-image: url(../image/tatoo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .uni {
+    background-image: url(../image/universe.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .day {
+    background-image: url(../image/day.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .pre {
+    background-image: url(../image/pretender.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 50%;
+    /* コンテナの幅に合わせる */
+    height: 200px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .modal {
+    display: none;
+    /* モーダルを最初は表示しない */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景を暗くする */
+    overflow: hidden;
+    /* 背景のスクロールを防止 */
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    /* モーダルを画面中央に */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 90%;
+    /* モーダルの幅を指定 */
+    max-height: 80%;
+    /* 高さを画面の80%までに制限 */
+    overflow-y: auto;
+    /* 中身があふれた場合にスクロール可能にする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* モーダルに影をつける */
+    border-radius: 20px;
+  }
+  .modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .modal-content .close:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .modal-content .flex h2 {
+    padding-bottom: 15px;
+    font-size: 1.2rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal-content .text {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .modal-content .text h3 {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    border-top: solid 1px black;
+    border-bottom: dashed 2px black;
+    padding-bottom: 15px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal-content .text p {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    color: #8e0404;
+    padding-bottom: 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  footer {
+    width: 100%;
+  }
+  footer p {
+    padding: 10px;
+    color: white;
+    text-align: right;
+  }
+}
+
+/* 大きなスクリーン向けのスタイル */
+@media (min-width: 1248px) {
+  /* ローディング画面のためのcss */
+  #splash {
+    /* fixedで全画面固定 */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Loading画面中央配置 */
+  #splash_logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  /* Loadingアイコンん大きさ設定 */
+  #splash_logo img {
+    width: 500px;
+  }
+  .fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+  @keyframes fadeUpAnime {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #header_top .header_img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #header_top .header_img .hige {
+    width: 15%;
+    height: 180px;
+    background: url(../image/hige2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  #header_top .header_img .stnd {
+    object-fit: cover;
+    height: auto;
+    background: url(../image/stand_by_you.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 100%;
+    display: none;
+  }
+  .box {
+    display: block;
+  }
+  .box ul {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+  }
+  .box ul li {
+    font-size: 1.3rem;
+    margin: 0 auto;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .box ul li:hover {
+    color: orange;
+  }
+  .box ul li a {
+    display: block;
+    padding-top: 70px;
+    margin-top: -70px;
+  }
+  #section_01 .article_01 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_01 .article_01 h1 {
+    color: white;
+    font-size: 1.6rem;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_01 .article_01 p {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 10px;
+    padding: 10px 15px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_01 .article_01 p:last-child {
+    text-align: right;
+    color: red;
+  }
+  #section_02 .article_02 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_02 .article_02 h2 {
+    color: white;
+    font-size: 1.6rem;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p {
+    width: 80%;
+    color: white;
+    font-size: 1.2rem;
+    line-height: 10px;
+    padding: 10px 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p:last-child {
+    margin-bottom: 1em;
+  }
+  #section_03 .article_03 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+    padding-bottom: 2em;
+  }
+  #section_03 .article_03 h2 {
+    color: white;
+    font-size: 1.6rem;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick {
+    width: 50%;
+    margin: 0 auto;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara {
+    background-color: black;
+    margin: 10px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 80vh;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara .Fujiwara {
+    background-image: url("../image/fujiwara.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 450px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara h3 {
+    color: white;
+    font-size: 1.6rem;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 80vh;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke .daisuke {
+    background-image: url("../image/daiske.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 20%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 450px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No2_Daisuke h3 {
+    color: white;
+    font-size: 1.6rem;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot {
+    background-color: black;
+    margin: 10px auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 80vh;
+  }
+  #section_03 .article_03 .slick .No3_Makot .makot {
+    background-image: url("../image/makot.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center top;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 450px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No3_Makot h3 {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 80vh;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura .Matsuura {
+    background-image: url("../image/matsur.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 30%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 450px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No4_Matsuura h3 {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .arrow_box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 20px 0 0;
+    position: relative;
+    margin-bottom: 2em;
+  }
+  #section_03 .prev-arrow,
+  #section_03 .next-arrow {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: coral;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+  }
+  #section_03 .prev-arrow {
+    transform: rotate(180deg);
+    margin-right: 20px;
+  }
+  #section_03 .prev-arrow::before,
+  #section_03 .next-arrow::before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+  #section_04 .cd {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 160px;
+    gap: 7%;
+  }
+  #section_04 .cd .rej {
+    background-image: url(../image/rejoice.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .rej:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .white {
+    background-image: url(../image/White.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .white:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .cry {
+    background-image: url(../image/cry.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .cry:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .sub {
+    background-image: url(../image/sabu.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .sub:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .chess {
+    background-image: url(../image/ches.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .chess:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .tattoo {
+    background-image: url(../image/tatoo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .tattoo:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .uni {
+    background-image: url(../image/universe.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .uni:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .day {
+    background-image: url(../image/day.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .day:hover {
+    opacity: 0.5;
+  }
+  #section_04 .cd .pre {
+    background-image: url(../image/pretender.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 20%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .pre:hover {
+    opacity: 0.5;
+  }
+  .modal {
+    display: none;
+    /* モーダルを最初は表示しない */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景を暗くする */
+    overflow: hidden;
+    /* 背景のスクロールを防止 */
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    /* モーダルを画面中央に */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    /* モーダルの幅を指定 */
+    max-height: 80%;
+    /* 高さを画面の80%までに制限 */
+    overflow-y: auto;
+    /* 中身があふれた場合にスクロール可能にする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* モーダルに影をつける */
+    border-radius: 20px;
+  }
+  .modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .modal-content .close:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .modal-content .flex h2 {
+    padding-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal-content .text {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .modal-content .text h3 {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    border-top: solid 1px #000000;
+    border-bottom: dashed 2px black;
+    padding-bottom: 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal-content .text h3:first-child {
+    border-top: solid 1px black;
+  }
+  .modal-content .text p {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    color: #8e0404;
+    padding-bottom: 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  footer {
+    width: 100%;
+  }
+  footer p {
+    padding: 10px;
+    color: white;
+    text-align: right;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1247px) {
+  /* ローディング画面のためのcss */
+  #splash {
+    /* fixedで全画面固定 */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Loading画面中央配置 */
+  #splash_logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  /* Loadingアイコンん大きさ設定 */
+  #splash_logo img {
+    width: 400px;
+  }
+  .fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+  @keyframes fadeUpAnime {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #header_top .btn-gNav {
+    position: fixed;
+    top: 15px;
+    right: 1px;
+    width: 50px;
+    height: 20px;
+    z-index: 12;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 400ms;
+  }
+  #header_top .btn-gNav span {
+    position: absolute;
+    width: 80%;
+    height: 5px;
+    background: #f9cf65;
+    border-radius: 10px;
+    transition: all 400ms;
+  }
+  #header_top .btn-gNav span:nth-child(1) {
+    /* background-color: black; */
+    top: 0px;
+  }
+  #header_top .btn-gNav span:nth-child(2) {
+    /* background-color: black; */
+    top: 15px;
+  }
+  #header_top .btn-gNav span:nth-child(3) {
+    /* background-color: black; */
+    top: 30px;
+  }
+  #header_top .btn-gNav.open span:nth-child(1) {
+    background: #ffffff;
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+  #header_top .btn-gNav.open span:nth-child(2),
+  #header_top .btn-gNav.open span:nth-child(3) {
+    top: 8px;
+    background: #ffffff;
+    transform: rotate(45deg);
+  }
+  .btn-gNav {
+    display: block;
+  }
+  .modal_class {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    box-sizing: border-box;
+    z-index: 1;
+    padding-top: 40px;
+    transition: 0.3s;
+  }
+  .modal_class.open {
+    right: 0;
+  }
+  .modal_class ul {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    flex-direction: column;
+    text-align: center;
+  }
+  .modal_class li {
+    color: white;
+    width: 100%;
+    padding: 75.5px;
+    font-size: 1.5rem;
+    border-bottom: #525252 3px solid;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal_class a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    padding-bottom: 5px;
+  }
+  #header_top .header_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  #header_top .header_img .hige {
+    width: 25%;
+    height: 150px;
+    background: url(../image/hige2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  #header_top .header_img .stnd {
+    width: 100%;
+    height: 100px;
+    background: url(../image/stand_by_you.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: none;
+  }
+  #section_01 .article_01 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_01 .article_01 h1 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  #section_01 .article_01 p {
+    color: white;
+    font-size: 1.3rem;
+    line-height: 30px;
+    padding: 10px 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_01 .article_01 p:last-child {
+    text-align: right;
+    color: red;
+  }
+  #section_02 .article_02 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_02 .article_02 h2 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p {
+    color: white;
+    font-size: 1.3rem;
+    line-height: 30px;
+    padding: 10px 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_02 .article_02 p:last-child {
+    margin-bottom: 1em;
+  }
+  #section_03 .article_03 {
+    width: 100%;
+    background-color: gray;
+    border-bottom: solid 1px black;
+  }
+  #section_03 .article_03 h2 {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 20px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick {
+    width: 80%;
+    margin: 0 auto;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara {
+    background-color: black;
+    margin: 10px auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 60vh;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara .Fujiwara {
+    background-image: url("../image/fujiwara.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 420px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No1_Fujiwara p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 60vh;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke .daisuke {
+    background-image: url("../image/daiske.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 20%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 420px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No2_Daisuke h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No2_Daisuke p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 60vh;
+  }
+  #section_03 .article_03 .slick .No3_Makot .makot {
+    background-image: url("../image/makot.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center top;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 420px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No3_Makot h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No3_Makot p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura {
+    background-color: black;
+    padding-top: 20px;
+    margin: 10px auto;
+    padding-bottom: 10px;
+    height: 60vh;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura .Matsuura {
+    background-image: url("../image/matsur.jpeg");
+    /* background-imageを使用 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center 30%;
+    /* 中央に画像を配置 */
+    width: 80%;
+    /* コンテナの幅に合わせる */
+    height: 420px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    /* 上下左右の余白を設定、上部に余白を作成 */
+  }
+  #section_03 .article_03 .slick .No4_Matsuura h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px;
+    text-align: center;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .article_03 .slick .No4_Matsuura p {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 5px 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  #section_03 .arrow_box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px 0 0;
+    position: relative;
+    margin-bottom: 1em;
+  }
+  #section_03 .prev-arrow,
+  #section_03 .next-arrow {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: coral;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+  }
+  #section_03 .prev-arrow {
+    transform: rotate(180deg);
+    margin-right: 20px;
+  }
+  #section_03 .prev-arrow::before,
+  #section_03 .next-arrow::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotate(45deg);
+  }
+  #section_04 .cd {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1 1 160px;
+    gap: 7%;
+  }
+  #section_04 .cd .rej {
+    background-image: url(../image/rejoice.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .white {
+    background-image: url(../image/White.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .cry {
+    background-image: url(../image/cry.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .sub {
+    background-image: url(../image/sabu.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .chess {
+    background-image: url(../image/ches.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .tattoo {
+    background-image: url(../image/tatoo.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .uni {
+    background-image: url(../image/universe.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .day {
+    background-image: url(../image/day.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  #section_04 .cd .pre {
+    background-image: url(../image/pretender.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 画像がコンテナを覆うように表示 */
+    background-position: center;
+    /* 中央に画像を配置 */
+    width: 40%;
+    /* コンテナの幅に合わせる */
+    height: 300px;
+    /* 高さも設定 */
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  .modal {
+    display: none;
+    /* モーダルを最初は表示しない */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景を暗くする */
+    overflow: hidden;
+    /* 背景のスクロールを防止 */
+  }
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    /* モーダルを画面中央に */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 90%;
+    /* モーダルの幅を指定 */
+    max-height: 80%;
+    /* 高さを画面の80%までに制限 */
+    overflow-y: auto;
+    /* 中身があふれた場合にスクロール可能にする */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* モーダルに影をつける */
+    border-radius: 20px;
+  }
+  .modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .modal-content .close:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-content .flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .modal-content .flex h2 {
+    padding-bottom: 15px;
+    font-size: 1.6rem;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .modal-content .text {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .modal-content .text h3 {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    border-top: solid 1px black;
+    border-bottom: dashed 2px black;
+    padding-bottom: 15px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.3rem;
+  }
+  .modal-content .text p {
+    padding-top: 10px;
+    line-height: 20px;
+    letter-spacing: 3px;
+    color: #8e0404;
+    padding-bottom: 10px;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.3rem;
+  }
+  footer {
+    width: 100%;
+  }
+  footer p {
+    padding: 10px;
+    color: white;
+    text-align: right;
+  }
+}
+/*# sourceMappingURL=style.css.map */
